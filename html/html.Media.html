@@ -1,0 +1,67 @@
+<!doctype html>
+<a class="item" role="listitem" href="#" aria-label="Foto kota malam">
+<img src="https://images.unsplash.com/photo-1491553895911-0055eca6402d?q=80&w=800&auto=format&fit=crop" alt="Kota di malam hari" loading="lazy">
+</a>
+<a class="item" role="listitem" href="#" aria-label="Foto hutan berkabut">
+<img src="https://images.unsplash.com/photo-1482192505345-5655af888cc4?q=80&w=800&auto=format&fit=crop" alt="Hutan berkabut" loading="lazy">
+</a>
+<a class="item" role="listitem" href="#" aria-label="Foto pantai berpasir">
+<img src="https://images.unsplash.com/photo-1469474968028-56623f02e42e?q=80&w=800&auto=format&fit=crop" alt="Pantai berpasir" loading="lazy">
+</a>
+</div>
+</div>
+</div>
+</section>
+
+
+<!-- SECTION: MAP/IFRAME EMBED -->
+<section class="grid cols-2" style="margin-top:20px;" aria-labelledby="judul-embed">
+<article class="card">
+<div class="body">
+<h2 id="judul-embed">Embed Peta (OpenStreetMap)</h2>
+<p>Contoh <code>&lt;iframe&gt;</code> ringan dari OpenStreetMap. Ganti koordinat sesuai lokasi Anda.</p>
+</div>
+<iframe style="aspect-ratio: 16/9; border:0;" loading="lazy" src="https://www.openstreetmap.org/export/embed.html?bbox=106.780%2C-6.27%2C107.04%2C-6.05&amp;layer=mapnik"></iframe>
+</article>
+
+
+<article class="card">
+<div class="body">
+<h2>Embed PDF</h2>
+<p>Menampilkan pratinjau PDF langsung di halaman.</p>
+</div>
+<iframe style="aspect-ratio: 4/3; border:0;" loading="lazy" src="https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf" title="Contoh PDF"></iframe>
+</article>
+</section>
+
+
+</main>
+
+
+<footer>
+Dibuat dengan ❤ | <a class="link" href="#" onclick="window.scrollTo({top:0,behavior:'smooth'});return false;">Kembali ke atas</a>
+</footer>
+
+
+<script>
+// Kontrol sederhana untuk video
+const vid = document.getElementById('vid');
+const playBtn = document.getElementById('playPause');
+const muteBtn = document.getElementById('mute');
+const pipBtn = document.getElementById('pip');
+const timeEl = document.getElementById('time');
+
+
+function fmt(t){ if(isNaN(t)) return '00:00'; const m = Math.floor(t/60).toString().padStart(2,'0'); const s = Math.floor(t%60).toString().padStart(2,'0'); return `${m}:${s}`; }
+
+
+playBtn.addEventListener('click', ()=> { vid.paused ? vid.play() : vid.pause(); });
+muteBtn.addEventListener('click', ()=> { vid.muted = !vid.muted; muteBtn.textContent = vid.muted ? 'Bunyikan' : 'Bisu'; });
+pipBtn.addEventListener('click', async ()=> { if (document.pictureInPictureEnabled && !vid.disablePictureInPicture) { try { await vid.requestPictureInPicture(); } catch(e){ console.warn(e); } } });
+
+
+vid.addEventListener('timeupdate', ()=> { timeEl.textContent = `${fmt(vid.currentTime)} / ${fmt(vid.duration)}`; });
+vid.addEventListener('loadedmetadata', ()=> { timeEl.textContent = `${fmt(0)} / ${fmt(vid.duration)}`; });
+</script>
+</body>
+</html>
